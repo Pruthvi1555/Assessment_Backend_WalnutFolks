@@ -91,15 +91,8 @@ TESTING THE SERVICE
    }
 
 2. Send Webhook
-   curl -X POST "https://assessmentbackendwalnutfolks-production.up.railway.app/v1/webhooks/transactions" \
-     -H "Content-Type: application/json" \
-     -d '{
-           "transaction_id": "txn_test_001",
-           "source_account": "acc_user_001",
-           "destination_account": "acc_merchant_001",
-           "amount": 1500,
-           "currency": "INR"
-         }'
+   curl -X POST "https://assessmentbackendwalnutfolks-production.up.railway.app/v1/webhooks/transactions" -H "Content-Type: application/json" -d "{\"transaction_id\":\"txn_test_001\",\"source_account\":\"acc_user_001\",\"destination_account\":\"acc_merchant_001\",\"amount\":1500,\"currency\":\"INR\"}"
+
 
    Response:
    {}
@@ -107,7 +100,7 @@ TESTING THE SERVICE
    (This means the webhook was accepted and is being processed in the background.)
 
 3. Check Transaction Status
-   curl "https://assessmentbackendwalnutfolks-production.up.railway.app/v1/transactions/txn_test_001"
+   curl -X GET https://assessmentbackendwalnutfolks-production.up.railway.app/v1/transactions/txn_test_001
 
    Response (after ~30 seconds):
    {
